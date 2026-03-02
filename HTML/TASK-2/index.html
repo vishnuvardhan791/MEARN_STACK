@@ -1,0 +1,101 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title> Registration Form</title> 
+	</head>
+
+	<body>
+		<table align ="center"  cellpadding ="15" border ="1">
+			<form>
+			<tr>
+				<th> 
+					<font size="5">Candidate Details
+					</font>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label>First Name<font color="red">*</font></label>
+					<input type ="text" placeholder="Enter First Name" required >
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label>Middle Name</label>
+					<input type ="text" placeholder="Enter Middle Name" >
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label>Last Name<font color="red">*</font></label>
+					<input type ="text" placeholder="Enter Last Name" required >
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label>Date of Birth<font color="red">*</font></label>
+					<input type ="date"  required >
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label>Gender</label>
+					<input type ="radio" name ="vishnu" >Male
+					<input type ="radio" name ="vishnu" >Female
+					<input type ="radio" name ="vishnu" >Prefer Not to say
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label>Email<font color="red">*</font></label>
+					<input type ="email" placeholder="Enter Email" required >
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label>Phone Number</label>
+					<input type ="text" placeholder="Enter Phone Number" required pattern = "[6-9]{1}[0-9]{9}">
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label>Select State</label>
+					<input list ="vishnu" placeholder ="select the state">
+					<datalist id = "vishnu">
+						<option>Jammu Kashmir</option>
+						<option>Mumbai</option>
+						<option>Bangalore</option>
+						<option>Telangana</option>
+						<option>Andhra Pradesh</option>
+						<option>Chennai</option>
+					</datalist>
+
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label>Select Your City</label>
+					<select>
+						<option>Hyderabad</option>
+						<option>Sangareddy</option>
+						<option>Gajwel</option>
+						<option>karimnagar</option>
+					</select>				
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label>Resume<font color="red">*</font></label>
+					<input type ="file" required >
+				</th>
+			</tr>
+
+			</form>
+		</table>
+		
+		<div align ="center" ><font size =15></font>
+			<input type ="submit" value="Register">
+			<input type ="reset" value="cancel">
+		</div>
+	</body>
+</html>
