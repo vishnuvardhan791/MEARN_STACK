@@ -1,0 +1,181 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accenture</title>
+    <style>
+        body{
+            background-color: #f9f9f9;
+        }
+        .main-header{
+            position: sticky;
+            top: 0;
+            display:flex;
+            justify-content:flex-start;
+            align-items: center;
+            background-color:#f9f9f9;
+            padding-left: 90px;
+            gap:190px;
+
+        }
+        .nav-list{
+            display: flex;
+            list-style: none;
+            gap: 80px;
+        }
+        .nav-list a{
+            text-decoration: none;
+            font-size: 20px;
+            color: #333;
+            padding: 8px 12px;
+            transition: 0.3s;
+            display:inline-block;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .nav-list >li>a:hover{
+            background-color:#900FE3;
+            color:white;
+            transform:scale(1.2);
+            box-shadow: 0px 4px 10px black;
+        }
+        .dropdown{
+            position: relative;
+        }
+        .dropdown-menu{
+            position: absolute;
+            top:100%;
+            left:-32px;
+            display: none;
+            background: #f9f9f9;
+            list-style: none;
+            min-width:250px;
+            margin-top: 0;
+
+        }
+        .dropdown:hover .dropdown-menu{
+            display: block;
+        }
+        .dropdown-menu li a {
+            display: block;
+            padding: 10px;
+            transition: all 0.2s ease;
+        }
+        .dropdown-menu li a:hover{
+            background-color: #900FE3;
+            color: white;
+            transform: scale(1.03);
+            padding-left: 20px;
+            box-shadow: 0px 4px 10px black;
+        }
+        .about-container{
+            padding: 100px 10%;
+            display: flex;
+            flex-direction: column;
+            gap: 120px;
+        }
+        .row{
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+        .row:hover h2{
+            color: #000;
+            transition: color 0.4s ease;
+        }
+        .row:nth-child(even){
+            flex-direction: row-reverse;
+        }
+        .image-box{
+            flex: 1;
+        }
+        .image-box img{
+            width: 100%;
+            border-radius: 15px;
+            display: block;
+
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        .image-box img:hover{
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px black;
+        }
+        .content-box{
+            flex: 1;
+        }
+        .content-box h2{
+            color: #900FE3;
+            font-size: 2.5rem;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <a href="index.html" class="logo">
+            <img src = "Accenture-Logo-removebg-preview.png" width="150px" height="150px" alt="company logo">
+        </a>
+
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+
+                <li><a href="about.html">About</a></li>
+
+                <li class="dropdown"><a href="services.html" >Services</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="services.html">Software and Platforms</a></li>
+                        <li><a href="services.html">Cyber Security</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="careers.html">Careers</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="careers.html">Software Developer</a></li>
+                        <li><a href="careers.html">Full Stack Developer</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+        </nav>
+
+    </header>
+    <main class="about-container">
+
+        <section class="row">
+            <div class="image-box">
+                <img src="about-image1.jpg" alt="Innovation">
+            </div>
+            <div class="content-box">
+                <h2>Strategy & Consulting</h2>
+                <p>We work with the world's leading businesses to build their digital core and optimize operations.</p>
+            </div>
+        </section>
+
+        <section class="row">
+            <div class="image-box">
+                <img src="about-image2.jpg" alt="Technology Services">
+            </div>
+            <div class="content-box">
+                <h2>Technology Services</h2>
+                <p>Our technology services cover the entire range of capabilities, from cloud and security to AI.</p>
+            </div>
+        </section>
+
+        <section class="row">
+            <div class="image-box">
+                <img src="about-image3.jpg" alt="Accenture Operations">
+            </div>
+            <div class="content-box">
+                <h2>Operations</h2>
+                <p>We provide specialized capabilities through our global network of delivery centers.</p>
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>

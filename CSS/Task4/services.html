@@ -1,0 +1,222 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accenture</title>
+    <style>
+        body{
+            background-color: #f9f9f9;
+        }
+        .main-header{
+            position: sticky;
+            top: 0;
+            display:flex;
+            justify-content:flex-start;
+            align-items: center;
+            background-color:#f9f9f9;
+            padding-left: 90px;
+            gap:190px;
+
+        }
+        .nav-list{
+            display: flex;
+            list-style: none;
+            gap: 80px;
+        }
+        .nav-list a{
+            text-decoration: none;
+            font-size: 20px;
+            color: #333;
+            padding: 8px 12px;
+            transition: 0.3s;
+            display:inline-block;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .nav-list >li>a:hover{
+            background-color:#900FE3;
+            color:white;
+            transform:scale(1.2);
+            box-shadow: 0px 4px 10px black;
+        }
+        .dropdown{
+            position: relative;
+        }
+        .dropdown-menu{
+            position: absolute;
+            top:100%;
+            left:-32px;
+            display: none;
+            background: #f9f9f9;
+            list-style: none;
+            min-width:250px;
+            margin-top: 0;
+
+        }
+        .dropdown:hover .dropdown-menu{
+            display: block;
+        }
+        .dropdown-menu li a {
+            display: block;
+            padding: 10px;
+            transition: all 0.2s ease;
+        }
+        .dropdown-menu li a:hover{
+            background-color: #900FE3;
+            color: white;
+            transform: scale(1.03);
+            padding-left: 20px;
+            box-shadow: 0px 4px 10px black;
+        }
+        .service-container{
+            padding: 60px 10% ;
+            display: flex;
+            flex-direction: column;
+            gap: 70px;
+        }
+
+        .page-title{
+            text-align: center;
+            font-size: 40px;
+            color: #900FE3;
+        }
+
+        .page-title:hover{
+            color: #000;
+            transition: color 0.4s ease;
+        }
+
+        .service-row{
+            display: flex;
+            align-items: center;
+            gap:80px;
+        }
+
+        .service-row:hover li{
+            color: #000;
+            transition: color 0.4s ease;
+        }
+
+        .service-row:hover h2{
+            color: #900FE3;
+            transition: color 0.4s ease;
+        }
+        .service-row:nth-child(even){
+            flex-direction: row-reverse;
+        }
+
+        .service-content{
+            flex: 1;
+        }
+
+        .service-content h2{
+            font-size: 35px;
+            color: #333;
+            gap: 20px;
+        }
+
+        .service-highlights{
+            list-style:square;
+            color: #900FE3;
+            font-weight: bold;
+            line-height: 2;
+        }
+
+        .service-image{
+            flex: 1;
+        }
+
+        .service-image img{
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px black;
+            transition: transform 0.4s ease;
+        }
+
+        .service-image img:hover{
+            transform: translateY(-10px);
+        }
+
+        
+
+
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <a href="index.html" class="logo">
+            <img src = "Accenture-Logo-removebg-preview.png" width="150px" height="150px" alt="company logo">
+        </a>
+
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+
+                <li><a href="about.html">About</a></li>
+
+                <li class="dropdown"><a href="services.html" >Services</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="services.html">Software and Platforms</a></li>
+                        <li><a href="services.html">Cyber Security</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="careers.html">Careers</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="careers.html">Software Developer</a></li>
+                        <li><a href="careers.html">Full Stack Developer</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+        </nav>
+
+    </header>
+
+    <main class="service-container">
+        <h1 class="page-title">Our Expertise</h1>
+
+        <section class="service-row">
+            <div class="service-content">
+                <h2>Software and Platforms</h2>
+                <p>We help businesses build custom software solutions and leverage powerful platforms to drive digital transformation. From cloud-native apps to enterprise platforms, we deliver scale and speed.</p>
+                <ul class="service-highlights">
+                    <li>Custom App Development</li>
+                    <li>Cloud Platform Integration</li>
+                    <li>SaaS Solutions</li>
+
+                </ul>
+            </div>
+            <div class="service-image">
+                <img src="service-image1.jpg" alt="Software and Platforms">
+
+            </div>
+
+        </section>
+
+        <section class="service-row">
+            <div class="service-content">
+                <h2>Cyber Security</h2>
+                <p>In an era of constant threats, we provide end-to-end security services. We protect your digital assets through advanced threat intelligence, resilience planning, and 24/7 monitoring.</p>
+                <ul class="service-highlights">
+                    <li>Threat Defense & Response</li>
+                    <li>Identity Management</li>
+                    <li>Cloud Security</li>
+
+                </ul>
+            </div>
+            <div class="service-image">
+                <img src="service-image2.webp" alt="Cyber Security">
+
+            </div>
+
+        </section>
+
+
+
+
+    </main>
+    
+</body>
+</html>
