@@ -69,6 +69,92 @@
             box-shadow: 0px 4px 10px black;
         }
 
+       
+        .auth-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            padding: 60px 20px;
+            font-family: sans-serif;
+        }
+
+        .auth-box {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px black;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .auth-box h2 {
+            color: #333;
+            margin-bottom: 25px;
+            border-left: 5px solid #900FE3;
+            padding-left: 15px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box; /* Critical for layout */
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #900FE3;
+            box-shadow: 0 0 5px rgba(144, 15, 227, 0.2);
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #900FE3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .auth-btn:hover {
+            background-color: #720cb5;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px black;
+        }
+
+        .auth-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .auth-links a {
+            text-decoration: none;
+            font-size: 14px;
+            color: #900FE3;
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+
 
     </style>
 </head>
@@ -103,6 +189,29 @@
         </nav>
 
     </header>
+
+    <section class="auth-container">
+    <div class="auth-box">
+        <h2>Sign In</h2>
+        <form>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter your username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="auth-btn">Sign In</button>
+            <div class="auth-links">
+                <a href="#signup">Create Account</a>
+                <a href="#reset">Forgot Password?</a>
+            </div>
+        </form>
+    </div>
+
+    
+</section>
     
 </body>
 </html>
