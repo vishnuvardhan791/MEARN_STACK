@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <nav >
+<div class="row p-5">
+    <div class="col-12 col-md-2">
+    <ul type="none" class="d-flex  gap-4 ">
+        <li><a href="index.html"><i class="fa-solid fa-house-circle-check"></i></a>
+           <li><h4>GokulHomes</h4></li>
+        </li>
+        </ul>
+        </div>
+        <div  class="col-12 col-md-10">
+
+       <ul type="none" class="d-flex justify-content-center gap-4 align-items-center  ">
+        <li class="bg-warning "><a href="#home" class="text-decoration-none">Home</a></li>          
+        <li class="bg-warning"><a href="#about"class="text-decoration-none">About</a></li>
+        <li class="bg-warning"><a href="#projects"class="text-decoration-none">Projects</a></li>
+        <li class="bg-warning"><a href="#gallery"class="text-decoration-none">Gallery</a> </li>
+        <li class="bg-warning"><a href="#contact"class="text-decoration-none">Contact</a></li>
+    </ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+
+
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container">
+
+            <a class="navbar-brand" href="#">MyWebsite</a>
+
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://static.vecteezy.com/system/resources/previews/023/005/470/non_2x/landscape-with-green-hills-and-river-at-sunset-3d-render-ai-generated-free-photo.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?cs=srgb&dl=daylight-environment-forest-459225.jpg&fm=jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://www.pixelstalk.net/wp-content/uploads/2016/07/Download-Free-Pictures-3840x2160.jpg" class="d-block w-100" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+
+
+    <div class="accordion" id="myAccordion">
+    
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#one">
+                    Section 1
+                </button>
+            </h2>
+    
+            <div id="one" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                <div class="accordion-body">
+                    This is section 1 content.
+                </div>
+            </div>
+        </div>
+    
+    
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#two">
+                    Section 2
+                </button>
+            </h2>
+    
+            <div id="two" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                <div class="accordion-body">
+                    This is section 2 content.
+                </div>
+            </div>
+        </div>
+    
+    
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#three">
+                    Section 3
+                </button>
+            </h2>
+    
+            <div id="three" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                <div class="accordion-body">
+                    This is section 3 content.
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+<ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+</ul>
+
+
+<button type="button" class="btn btn-primary">
+    Notifications <span class="badge bg-secondary">4</span>
+</button>
+
+
+
+
+
+<div class="container">
+
+    <h2>Registration Form</h2>
+
+    <form>
+
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" placeholder="Enter your name">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" placeholder="Enter your email">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" placeholder="Enter password">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Select Course</label>
+            <select class="form-select">
+                <option>Java</option>
+                <option>Python</option>
+                <option>Web Development</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Message</label>
+            <textarea class="form-control"></textarea>
+        </div>
+
+        <button class="btn btn-primary">Submit</button>
+
+    </form>
+
+</div>
+
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+</button>
+
+
+<div class="modal fade" id="exampleModal" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="alert alert-danger alert-dismissable">
+<button class="btn btn-close" data-bs-dismiss="alert">hello</button>
+</div>
+
+
+    
+
+<div class="dropdown">
+<button class="btn btn-primary dropdown-toggle"type="button" id="k" data-bs-toggle="dropdown">hello dropdown</button>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item">helloo</a>
+</li>
+<li><a class="dropdown-item"></a>hai</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<div class="row">
+    <img src="https://wallpapercave.com/wp/wp3049325.jpg"height="500px" alt="">
+     
+</div>
+<br><br><br><br>
+<div id="about" class="row ">
+    <div class="col-12 col-md-4">
+    <img src="https://tse3.mm.bing.net/th/id/OIP.ydIb5N45qtLb4wiMe2_GLAHaE8?pid=Api&P=0&h=180" class="img-fluid" alt="">
+</div>
+ <div class="col-12 col-md-8">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus officia molestias et aspernatur eaque sit nisi, ea quos perspiciatis incidunt totam maiores minus earum delectus minima. Distinctio quod ducimus facilis.
+Fugiat error libero suscipit magnam maxime repudiandae animi soluta debitis magni quae, cumque, vero obcaecati possimus laudantium nihil, quas a esse. Assumenda accusamus maiores dolorum cum, possimus harum eos ipsam?</p>
+</div>
+
+</div>
+<br><br><br><br><br>
+
+<div class="row d-flex justify-content-center align-items-center p-2">
+    <div class="col-12 col-md-4 ">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.OKU4iyzluG-a31MNYNXzkwHaE8?pid=Api&P=0&h=180" class="img-fluid" alt="">
+    </div>
+    <div class="col-12 col-md-4">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.fIk1j_zcFMCD8f2eK5QTHQHaHa?pid=Api&P=0&h=180"class="img-fluid" alt="">
+    </div>
+    <div class="col-12 col-md-4">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.tAv-6t_nTudTdAe9Q-MNtgHaHa?pid=Api&P=0&h=180"class="img-fluid" alt="">
+    </div>
+</div>
+<div>
+
+<div class="row d-flex p-3">
+<div class="col-12 col-md-4">
+<p>award1</p>
+</div>
+<div class="col-12 col-md-4">
+<p>award2</p>
+</div>
+<div class="col-12 col-md-4">
+   
+<p>award3</p>
+</div>
+
+</div>
+<br><br><br><br><br>
+
+<div id="projects" class="row ">
+    <h2>Projects</h2>
+    <div class="col-12 col-md-4">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.cidiId6PCgOizoOKo6BQAAHaEs?pid=Api&P=0&h=180" class="img-fluid"
+            alt="">
+            <h6>MyHomeJewel</h6>
+    </div>
+    <div class="col-12 col-md-8">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio optio molestiae quaerat assumenda minima neque accusantium pariatur vero veritatis! Porro provident delectus ullam, necessitatibus fuga temporibus ipsa maxime adipisci quis!
+        Libero deleniti eligendi aliquam voluptas vero! Architecto id amet placeat cupiditate, autem cumque magnam ea culpa obcaecati tempore illum sunt, ducimus, quas voluptate doloribus. Natus, fugit aut. Praesentium, et aut!</p>
+    </div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="row ">
+       
+        <div class="col-12 col-md-8">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni distinctio tempore natus maxime harum recusandae, mollitia laudantium. Mollitia, natus perferendis asperiores et temporibus blanditiis praesentium placeat, facilis exercitationem repudiandae enim.
+            At debitis fugiat quia iste voluptatibus voluptatum aut magnam asperiores deserunt animi esse molestiae quibusdam, autem suscipit hic obcaecati corporis aliquid dolorum expedita. Quaerat harum itaque cumque fugiat modi nemo.</p>
+        </div>
+   
+        <div class="col-12 col-md-4">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.roqejy5dFhVOHnN3gbgSpAHaEK?pid=Api&P=0&h=180" class="img-fluid" alt="">
+            <h6>MyTurningPoint</h6>
+        </div>
+
+</div>
+<div id="gallery" class="row">
+    <h2>Gallery</h2>
+    <div class="col-12 col-md-4">
+<img src="https://tse4.mm.bing.net/th/id/OIP.0a2TAV6PkgM9yISqbBLEgAHaE8?pid=Api&P=0&h=180" alt="">
+    </div>
+    <div class="col-12 col-md-4">
+<img src="https://tse1.mm.bing.net/th/id/OIP.s3wYD7HXctal2Tf-JhQLCwHaEo?pid=Api&P=0&h=180" alt="">
+</div>
+
+<div class="col-12 col-md-4">
+<img src="https://tse4.mm.bing.net/th/id/OIP.6GyQJ5D_EXwDCInqoBh4tgHaE7?pid=Api&P=0&h=180" alt="">
+    </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="row">
+    <div class="col-12 col-md-4">
+<img src="https://tse4.mm.bing.net/th/id/OIP.6x2ioust7CBLTXiAEnEhBgHaGL?pid=Api&P=0&h=180" alt="">
+    </div>
+    <div class="col-12 col-md-4">
+<img src="https://tse4.mm.bing.net/th/id/OIP.V93jg_WFjrGVc_E0SY2NQAHaHa?pid=Api&P=0&h=180" alt="" width="300" height="200">
+</div>
+<div class="col-12 col-md-4">
+<img src="https://tse1.mm.bing.net/th/id/OIP.k0R6_dR5l9zvoroCOOmKHQHaEj?pid=Api&P=0&h=180" alt="">
+</div>
+
+</div></div>
+<br><br>
+<div class="row">
+    <div class="col-12 col-md-4">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.4r6TfvfSSVVXtwp8JFE12AHaLH?pid=Api&P=0&h=180" alt="" width="200" height="200">
+    </div>
+    <div class="col-12 col-md-4">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.-1cM3XwYakvSZeguqIcotQHaEK?pid=Api&P=0&h=180" alt="">
+    </div>
+    <div class="col-12 col-md-4">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.UMOpW0F6wUry8V_cPQUlIgHaHa?pid=Api&P=0&h=180" alt="" width="300" height="200">
+    </div>
+
+</div>
+
+
+    <div>
+        <button class="btn btn-primary"  type="button"data-bs-toggle="collapse" data-bs-target="#images">see more</button>
+        <div class="row collapse" id="images">
+    <div class="col-12 col-md-4">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.4r6TfvfSSVVXtwp8JFE12AHaLH?pid=Api&P=0&h=180" alt="" width="200"
+            height="200">
+    </div>
+    <div class="col-12 col-md-4">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.-1cM3XwYakvSZeguqIcotQHaEK?pid=Api&P=0&h=180" alt="">
+    </div>
+    <div class="col-12 col-md-4">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.UMOpW0F6wUry8V_cPQUlIgHaHa?pid=Api&P=0&h=180" alt="" width="300"
+            height="200">
+    </div>
+
+    </div>
+    </div>
+    </div>
+  
+</div>
+</div>
+
+<div class="card" style="width:400px">
+   
+<img src="https://www.businessoutreach.in/wp-content/uploads/2023/02/Bill-Bowerman-Co-Founder-Of-Nike.png" class="card-img-top"alt="">
+
+<div class="card-body">
+<h3 class="card-title">our Founder</h3>
+<p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, nulla reiciendis quaerat quo distinctio voluptatem autem reprehenderit accusamus cupiditate minima deleniti fuga minus! Asperiores, placeat aliquam cum quibusdam consequuntur vitae.</p>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br>
+<h1 class="text-center">Contact us</h1>
+
+<div id="contact"class="bg-secondary d-flex justify-content-center ">
+  <div class="row p-4">
+    <div class="col">
+    <input type="text" name="" id=""placeholder="name">
+    </div><br><br><br>
+    <div class="row">
+    <div class="col">
+    <input type="email" name="" id=""placeholder="email us">
+    </div>
+    </div><br><br><br>
+    <div class="row">
+    <div class="col">
+    <input type="password" name="" id="" placeholder="password">
+    </div>
+    </div>
+    <br><br><br>
+    <div class="col">
+    <input type="submit" name="" id="">
+    <div class="col">
+    
+  </div>  
+
+</div>
+<br><br><br>
+<div>
+<i class="fa-brands fa-square-instagram"></i>
+<i class="fa-brands fa-x-twitter"></i>
+<i class="fa-brands fa-facebook-messenger"></i>
+</div>
+<h3 class="text-center">@copyrights</h3>
+    </div>
+</body>
+</html>
