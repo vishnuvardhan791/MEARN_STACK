@@ -1,0 +1,6 @@
+.sidebar {
+  width: 200px;
+  height:calc(100vh - 56px);/* navbar height  56 is default navbar height*/
+  position:sticky;
+  top: 56px;
+}

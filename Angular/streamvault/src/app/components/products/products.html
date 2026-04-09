@@ -1,0 +1,49 @@
+<div class="container mt-3">
+
+  <h2 class="mb-3"> Movie Collection</h2>
+
+  <input type="text"
+         [(ngModel)]="searchText"
+         class="form-control mb-3"
+         placeholder="Tell me what movie you want mamaa........">
+
+  <div class="row">
+
+    <div class="col-md-3 mb-4" *ngFor="let movie of movies.filter(m=>m.title.toLocaleLowerCase().includes(searchText.toLocaleLowerCase()))">
+
+      <div class="card shadow h-100">
+
+        <img [src]="movie.image" height="400px" width="300px" class="card-img-top" alt="movie">
+
+        <div class="card-body text-center">
+
+          <h5 class="card-title">{{ movie.title }}</h5>
+
+          <p class="mb-2">
+            <span class="fw-bold">Rating: </span>
+            <span class="text-warning">{{ movie.rating }}</span>
+        </p>
+
+          <button class="w-100"
+                    [ngClass]="isFav(movie) ? 'btn btn-secondary' : 'btn btn-success'"
+                    (click)="addToFav(movie)"
+                    [disabled]="isFav(movie)">
+
+            {{ isFav(movie) ? ' Added' : ' Add to Favorites' }}
+
+            </button>
+          
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <p *ngIf="movies.filter(m => m.title.toLowerCase().includes(searchText.toLowerCase())).length === 0"
+            class="text-center text-muted">
+                 Sorry mama no movies found 
+        </p>
+
+</div>
