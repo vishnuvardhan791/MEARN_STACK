@@ -1,0 +1,50 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    
+    <div class="card shadow-lg login-card">
+        
+        <div class="card-header text-center">
+            <h4 class="mb-1">Welcome Back</h4>
+        </div>
+
+        <div class="card-body p4">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-control" formControlName="username">
+
+                    <small class="text-danger" *ngIf="loginForm.controls.username.touched && loginForm.controls.username.invalid">
+                        Username is required 
+                    </small>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" formControlName="password">
+
+                    <small class="text-danger"
+                        *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.['required']">
+                        Password is required
+                    </small>
+
+                    <small class="text-danger"
+                        *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.['minlength']">
+                        Minimum 8 characters required
+                    </small>
+                </div>
+
+                <button class="btn btn-primary w-100 mt-3" type="submit">
+                    Login
+                </button>
+
+            </form>
+        </div>
+        <div class="card-footer text-center">
+            <small>
+                Don't you have an account?
+                <a routerLink="/signup">Signup</a>
+            </small>
+        </div>
+
+    </div>
+</div>

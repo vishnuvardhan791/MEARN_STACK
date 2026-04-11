@@ -1,0 +1,11 @@
+/* .signup-card {
+  width: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+} */
+
+.signup-card {
+  width: 500px;
+  max-width: 90%;
+  border-radius: 12px;
+}

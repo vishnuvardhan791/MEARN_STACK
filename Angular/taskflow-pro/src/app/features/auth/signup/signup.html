@@ -1,0 +1,74 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow-lg signup-card">
+
+        <div class="card-header text-center">
+                <h4 class="mb-1">Create Account</h4>
+        </div>
+
+        <div class="card-body p-4">
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-control" formControlName="username">
+
+                    <small class="text-danger"
+                        *ngIf="signupForm.controls.username.touched && signupForm.controls.username.invalid">
+                        Username is required
+                        
+                    </small>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" formControlName="password">
+
+                    <small class="text-danger"
+                        *ngIf="signupForm.controls.password.touched && signupForm.controls.password.errors?.['required']">
+                        Password is required
+                    </small>
+
+                    <small class="text-danger"
+                        *ngIf="signupForm.controls.password.touched && signupForm.controls.password.errors?.['minlength']">
+                        Minimum 8 characters required
+                    </small>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Confirm password</label>
+                    <input type="password" class="form-control" formControlName="confirmPassword">
+
+                    <small class="text-danger"
+                        *ngIf="signupForm.controls.confirmPassword.touched && signupForm.controls.confirmPassword.invalid">
+                        ConfirmPassword is required 
+                    </small>
+
+                    <small class="text-danger"
+                        *ngIf="signupForm.touched && !passwordMatch()">
+                        Password do not match
+                    </small>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Role</label>
+                    <select class="form-select" formControlName="role">
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-success w-100 mt-2" type="submit">
+                    Signup
+                </button>
+
+            </form>
+
+        </div>
+
+        <div class="card-footer text-center">
+            <small>
+                Already have an Account?
+                <a routerLink="/login">Login</a>
+            </small>
+        </div>
+    </div>
+</div>
