@@ -1,2 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("bootstrap/dist/css/bootstrap.min.css");
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.card {
+  border-radius: 12px;
+  transition: 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+}

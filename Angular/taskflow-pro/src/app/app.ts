@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,14 @@ import { Component, signal } from '@angular/core';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('taskflow-pro');
+
+  constructor(private router:Router){}
+
+  isLoggedIn():boolean{
+    return !!localStorage.getItem('currentUser');
+  }
+
+  showNavbar():boolean{
+    return this.isLoggedIn() && this.router.url !=='/login' && this.router.url !=='/signup';
+  }
 }

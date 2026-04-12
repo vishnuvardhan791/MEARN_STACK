@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
+
 
 @Component({
   selector: 'app-task-card',
-  standalone: false,
+  standalone:false,
   templateUrl: './task-card.html',
-  styleUrl: './task-card.css',
+  styleUrl: './task-card.css'
 })
-export class TaskCard {}
+export class TaskCard {
+}

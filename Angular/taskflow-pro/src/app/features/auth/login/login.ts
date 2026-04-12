@@ -24,7 +24,8 @@ export class Login {
   onSubmit() {
     if (this.loginForm.valid) {
       // console.log(this.loginForm.value);
-      const {username,password}=this.loginForm.value;
+      const username = this.loginForm.value.username!;
+      const password = this.loginForm.value.password!;
 
       const users = JSON.parse(localStorage.getItem('users')||'[]');
 
@@ -37,8 +38,7 @@ export class Login {
           return;
         }
 
-        localStorage.setItem('currentUser',JSON.stringify('foundUser'));
-
+        localStorage.setItem('currentUser',JSON.stringify(foundUser));
         alert('Login Successfull');
 
         if(foundUser.role==='admin'){

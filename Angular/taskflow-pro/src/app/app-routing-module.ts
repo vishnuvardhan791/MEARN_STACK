@@ -13,6 +13,8 @@ import { Tasks as UserTasks } from './features/user/tasks/tasks';
 import { Dashboard as AdminDashboard } from './features/admin/dashboard/dashboard';
 import { Users } from './features/admin/users/users';
 import { Tasks as AdminTasks } from './features/admin/tasks/tasks';
+import { AuthGuard } from './core/guards/auth-guard';
+import { AdminGuard } from './core/guards/admin-guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -20,12 +22,29 @@ const routes: Routes = [
   { path: 'login', component: Login },
   { path: 'signup', component: Signup },
 
-  { path: 'user/dashboard', component: UserDashboard },
-  { path: 'user/tasks', component: UserTasks },
+  { path: 'user/dashboard',
+    component: UserDashboard,
+    canActivate:[AuthGuard]
+  },
 
-  { path: 'admin/dashboard', component: AdminDashboard },
-  { path: 'admin/users', component: Users },
-  { path: 'admin/tasks', component: AdminTasks }
+  { path: 'user/tasks',
+     component: UserTasks,
+     canActivate:[AuthGuard]
+  },
+
+  { path: 'admin/dashboard',
+     component: AdminDashboard,
+     canActivate:[AdminGuard]
+  },
+
+  { path: 'admin/users', 
+    component: Users,
+    canActivate:[AdminGuard]
+  },
+  { path: 'admin/tasks', 
+    component: AdminTasks,
+    canActivate:[AdminGuard] 
+  }
 ];
 
 @NgModule({

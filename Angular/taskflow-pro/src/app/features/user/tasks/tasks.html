@@ -1,1 +1,29 @@
-<p>tasks works!</p>
+<div class="row g-3">
+
+  <div class="col-md-4" *ngFor="let task of tasks">
+
+    <div class="card shadow-sm p-3 h-100">
+
+      <h5 class="fw-bold">{{ task.title }}</h5>
+      <p class="text-muted">{{ task.description }}</p>
+
+      <div class="mb-2">
+        <span class="badge bg-danger" *ngIf="task.priority === 'high'">High</span>
+        <span class="badge bg-warning" *ngIf="task.priority === 'medium'">Medium</span>
+        <span class="badge bg-secondary" *ngIf="task.priority === 'low'">Low</span>
+      </div>
+
+      <small class="text-muted">
+        Deadline: {{ task.deadline }}
+      </small>
+
+      <div class="mt-2">
+        <span class="badge bg-success" *ngIf="task.completed">Completed</span>
+        <span class="badge bg-warning text-dark" *ngIf="!task.completed">Pending</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

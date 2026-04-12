@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -8,6 +9,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './signup.css',
 })
 export class Signup {
+
+  constructor(private router:Router){}
   signupForm = new FormGroup({
     username: new FormControl('',[Validators.required]),
     password: new FormControl('',[Validators.required,
@@ -39,7 +42,7 @@ export class Signup {
 
       alert('signup successfull');
 
-      this.signupForm.reset();
+      this.router.navigate(['/login']);
 
     }
     else{

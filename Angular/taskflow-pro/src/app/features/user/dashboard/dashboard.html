@@ -1,1 +1,37 @@
-<p>dashboard works!</p>
+<div class="container mt-4">
+    <div class="mb-4">
+        <h3 class="fw-bold text-primary">Welcome back</h3>
+        <p class="text-muted">Here’s a quick overview of your tasks</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card dashboard-card shadow-sm border-0 text-center p-4">
+                <div class="icon bg-primary text-white mb-3">
+                    <i class="bi bi-list-task"></i>
+                </div>
+                <h6 class="text-muted">Total Tasks</h6>
+                <h2 class="fw-bold text-primary">{{totalTasks}}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card dashboard-card shadow-sm border-0 text-center p-4">
+                <div class="icon bg-success text-white mb-3">
+                    <i class="bi bi-check-circle"></i>
+                </div>
+                <h6 class="text-muted">Completed</h6>
+                <h2 class="fw-bold text-success">{{completedTasks}}</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card dashboard-card shadow-sm border-0 text-center p-4">
+                <div class="icon bg-danger text-white mb-3">
+                    <i class="bi bi-hourglass-split"></i>
+                </div>
+                <h6 class="text-muted">Pending</h6>
+                <h2 class="fw-bold text-danger">{{pendingTasks}}</h2>
+            </div>
+        </div>
+    </div>
+</div>
