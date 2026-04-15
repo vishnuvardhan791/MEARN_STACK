@@ -20,7 +20,6 @@ export class Signup {
                                 role:new FormControl('user')
   });
 
-  // custom validation
   passwordMatch():boolean {
     return this.signupForm.value.password === this.signupForm.value.confirmPassword;
   }
@@ -33,7 +32,7 @@ export class Signup {
         id:Date.now(),
         username:this.signupForm.value.username,
         password:this.signupForm.value.password,
-        role : this.signupForm.value.role,
+        role : 'user',
         isBlocked:false
       };
 
