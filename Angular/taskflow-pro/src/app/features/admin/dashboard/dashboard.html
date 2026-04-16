@@ -13,7 +13,7 @@
           <i class="bi bi-people-fill"></i>
         </div>
         <h6 class="text-muted">Total Users</h6>
-        <h2 class="fw-bold text-primary">{{totalUsers}}</h2>
+        <h2 class="fw-bold text-primary">{{ totalUsers }}</h2>
       </div>
     </div>
 
@@ -23,7 +23,7 @@
           <i class="bi bi-person-check-fill"></i>
         </div>
         <h6 class="text-muted">Active Users</h6>
-        <h2 class="fw-bold text-success">{{activeUsers}}</h2>
+        <h2 class="fw-bold text-success">{{ activeUsers }}</h2>
       </div>
     </div>
 
@@ -33,7 +33,7 @@
           <i class="bi bi-person-x-fill"></i>
         </div>
         <h6 class="text-muted">Blocked Users</h6>
-        <h2 class="fw-bold text-danger">{{blockedUsers}}</h2>
+        <h2 class="fw-bold text-danger">{{ blockedUsers }}</h2>
       </div>
     </div>
 
@@ -43,7 +43,7 @@
           <i class="bi bi-list-check"></i>
         </div>
         <h6 class="text-muted">Total Tasks</h6>
-        <h2 class="fw-bold text-dark">{{totalTasks}}</h2>
+        <h2 class="fw-bold text-dark">{{ totalTasks }}</h2>
       </div>
     </div>
 
@@ -51,51 +51,71 @@
 
   <div class="row g-4 mt-2">
 
-    <div class="col-md-6">
+    <div class="col-md-3">
+      <div class="card admin-card shadow-sm border-0 text-center p-4">
+        <div class="icon bg-primary text-white mb-3">
+          <i class="bi bi-list-task"></i>
+        </div>
+        <h6 class="text-muted">Assigned</h6>
+        <h2 class="fw-bold text-primary">{{ assignedTasks }}</h2>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card admin-card shadow-sm border-0 text-center p-4">
+        <div class="icon bg-warning text-dark mb-3">
+          <i class="bi bi-hourglass-split"></i>
+        </div>
+        <h6 class="text-muted">Submitted</h6>
+        <h2 class="fw-bold text-warning">{{ submittedTasks }}</h2>
+      </div>
+    </div>
+
+    <div class="col-md-3">
       <div class="card admin-card shadow-sm border-0 text-center p-4">
         <div class="icon bg-success text-white mb-3">
           <i class="bi bi-check-circle-fill"></i>
         </div>
-        <h6 class="text-muted">Completed Tasks</h6>
-        <h2 class="fw-bold text-success">{{completedTasks}}</h2>
+        <h6 class="text-muted">Approved</h6>
+        <h2 class="fw-bold text-success">{{ approvedTasks }}</h2>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card admin-card shadow-sm border-0 text-center p-4">
+        <div class="icon bg-danger text-white mb-3">
+          <i class="bi bi-exclamation-triangle"></i>
+        </div>
+        <h6 class="text-muted">Overdue</h6>
+        <h2 class="fw-bold text-danger">{{ overdueTasks }}</h2>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row mt-4 g-4">
+
+    <div class="col-md-6">
+      <div class="card shadow-sm border-0 p-3 text-center">
+        <h5 class="fw-bold mb-2">👤 User Overview</h5>
+
+        <div class="chart-container">
+          <canvas id="userChart"></canvas>
+        </div>
       </div>
     </div>
 
     <div class="col-md-6">
-      <div class="card admin-card shadow-sm border-0 text-center p-4">
-        <div class="icon bg-warning text-dark mb-3">
-          <i class="bi bi-exclamation-circle-fill"></i>
+      <div class="card shadow-sm border-0 p-3 text-center">
+        <h5 class="fw-bold mb-2">📊 Task Overview</h5>
+
+        <div class="chart-container">
+          <canvas id="taskChart"></canvas>
         </div>
-        <h6 class="text-muted">Pending Tasks</h6>
-        <h2 class="fw-bold text-warning">{{pendingTasks}}</h2>
       </div>
     </div>
 
   </div>
-
-  <div class="row mt-4">
-
-  <div class="col-md-6">
-    <div class="card shadow-sm border-0 p-3 text-center">
-      <h5 class="fw-bold mb-2"> User Overview</h5>
-
-      <div class="chart-container">
-        <canvas id="userChart"></canvas>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-6">
-    <div class="card shadow-sm border-0 p-3 text-center">
-      <h5 class="fw-bold mb-2"> Task Overview</h5>
-
-      <div class="chart-container">
-        <canvas id="taskChart"></canvas>
-      </div>
-    </div>
-  </div>
-
-</div>
 
   <div class="alert alert-info mt-4" *ngIf="blockedUsers > 0">
     ⚡ {{ blockedUsers }} users are blocked. Monitor activity.

@@ -18,3 +18,18 @@
   margin: 0 auto;
   font-size: 20px;
 }
+
+.chart-container {
+  width: 260px;
+  height: 260px;
+  margin: auto;
+}
+
+.chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.card{
+  height: 100%;
+}

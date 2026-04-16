@@ -1,38 +1,49 @@
 import { Component, OnInit } from '@angular/core';
 import { UserWithStats } from '../../../models/user.model';
-
+import { UserService } from '../../../core/services/user.service';
+import { TaskService } from '../../../core/services/task.service';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-users',
-  standalone: false,
+  standalone:false,
   templateUrl: './users.html',
   styleUrl: './users.css',
 })
-export class Users implements OnInit{
+export class Users implements OnInit {
 
-  users:UserWithStats[]=[];
-  searchText: string = '';
-  filterType: string = 'all'; 
+  constructor(
+    private userService: UserService,
+    private taskService: TaskService,
+    private authService: AuthService
+  ) {}
+
+  users: UserWithStats[] = [];
   filteredUsers: UserWithStats[] = [];
- 
+
+  searchText: string = '';
+  filterType: string = 'all';
+
   currentUser: any;
 
   ngOnInit(): void {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    this.currentUser = this.authService.getCurrentUser();
     this.loadUser();
   }
-  loadUser(){
-    const users = JSON.parse(localStorage.getItem('users')||'[]');
-    const tasks = JSON.parse(localStorage.getItem('tasks')||'[]');
 
-    this.users = users.map((user:any)=> {
-      const userTasks = tasks.filter((t:any)=>t.userId == user.id);
+  loadUser() {
+    const users = this.userService.getUsers();
+    const tasks = this.taskService.getTasks();
+
+    this.users = users.map((user: any) => {
+
+      const userTasks = tasks.filter((t: any) => t.userId == user.id);
 
       const totalTasks = userTasks.length;
-      const completedTasks = userTasks.filter((t:any)=> t.completed).length;
-      const pendingTasks = totalTasks-completedTasks;
+      const completedTasks = userTasks.filter((t: any) => t.completed).length;
+      const pendingTasks = totalTasks - completedTasks;
 
-      return{
+      return {
         ...user,
         totalTasks,
         completedTasks,
@@ -42,66 +53,46 @@ export class Users implements OnInit{
 
     this.applyFilters();
   }
+
   toggleBlock(user: UserWithStats) {
 
-  const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-
-  const users = JSON.parse(localStorage.getItem('users') || '[]');
-
-  const updatedUsers = users.map((u: any) => {
-    if (u.id == user.id) {
-      return {
-        ...u,
-        isBlocked: !u.isBlocked
-      };
+    if (this.currentUser.id === user.id) {
+      alert("You can't block yourself");
+      return;
     }
-    return u;
-  });
 
-  localStorage.setItem('users', JSON.stringify(updatedUsers));
-  this.loadUser();
-}
+    this.userService.toggleBlock(user.id); //  clean
+    this.loadUser();
+  }
 
   deleteUser(userId: number) {
 
+    if (this.currentUser.id === userId) {
+      alert("You can't delete yourself");
+      return;
+    }
 
-  const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    const confirmDelete = confirm('Are you sure you want to delete this user?');
+    if (!confirmDelete) return;
 
-  if (currentUser.id === userId) {
-    alert("You can't delete yourself");
-    return;
+    this.userService.deleteUser(userId);     //  user delete
+    this.taskService.deleteTasksByUser(userId); //  task delete
+
+    this.loadUser();
   }
 
-  const confirmDelete = confirm('Are you sure you want to delete this user?');
-  if (!confirmDelete) return;
-
- 
-  const users = JSON.parse(localStorage.getItem('users') || '[]');
-  const updatedUsers = users.filter((u: any) => u.id !== userId);
-  localStorage.setItem('users', JSON.stringify(updatedUsers));
-
-
-  const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
-  const updatedTasks = tasks.filter((t: any) => t.userId !== userId);
-  localStorage.setItem('tasks', JSON.stringify(updatedTasks));
-
-  this.loadUser();
-}
   applyFilters() {
+    this.filteredUsers = this.users.filter(user => {
 
-  this.filteredUsers = this.users.filter(user => {
+      const matchesSearch =
+        user.username.toLowerCase().includes(this.searchText.toLowerCase());
 
-  const matchesSearch =
-      user.username.toLowerCase().includes(this.searchText.toLowerCase());
+      const matchesFilter =
+        this.filterType === 'all' ||
+        (this.filterType === 'active' && !user.isBlocked) ||
+        (this.filterType === 'blocked' && user.isBlocked);
 
-  const matchesFilter =
-      this.filterType == 'all' ||
-      (this.filterType == 'active' && !user.isBlocked) ||
-      (this.filterType == 'blocked' && user.isBlocked);
-
-    return matchesSearch && matchesFilter;
-  });
-
-}
-
+      return matchesSearch && matchesFilter;
+    });
+  }
 }

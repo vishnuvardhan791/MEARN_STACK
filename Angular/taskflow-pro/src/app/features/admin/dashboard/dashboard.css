@@ -34,21 +34,17 @@
 .stat-card:hover {
   transform: translateY(-5px);
 }
-
-.chart-card {
-  padding: 15px !important;
-}
 .chart-container {
-  position: relative;
-  width: 220px;
-  height: 220px;
+  width: 260px;
+  height: 260px;
   margin: auto;
 }
 
-canvas {
+.chart-container canvas {
   width: 100% !important;
   height: 100% !important;
 }
-canvas:hover {
-  transform: scale(1.05);
+
+.card{
+  height: 100%;
 }
