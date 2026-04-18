@@ -1,88 +1,89 @@
 <div class="container mt-4">
 
+  <!-- HEADER -->
   <div class="d-flex justify-content-between align-items-center mb-4">
+    <h4 class="fw-bold page-title">User Management</h4>
 
-    <h3 class="fw-bold text-danger"> Admin - Users Dashboard</h3>
-    <span class="badge bg-dark px-3 py-2">Total Users: {{ users.length }}</span>
+    <div class="user-count-chip">
+      👥 {{ users.length }} Users
+    </div>
   </div>
-  <div class="d-flex justify-content-between align-items-center mb-4 gap-3">
 
-  <input type="text"
-         class="form-control w-50"
-         placeholder=" Search users..."
-         [(ngModel)]="searchText"
-         (input)="applyFilters()">
+  <!-- FILTER BAR -->
+  <div class="filter-bar mb-4">
 
-  <select class="form-select w-25"
-          [(ngModel)]="filterType"
-          (change)="applyFilters()">
+    <input type="text"
+           class="custom-input"
+           placeholder=" Search users..."
+           [(ngModel)]="searchText"
+           (input)="applyFilters()">
 
-    <option value="all">All Users</option>
-    <option value="active">Active</option>
-    <option value="blocked">Blocked</option>
+    <select class="custom-input"
+            [(ngModel)]="filterType"
+            (change)="applyFilters()">
+      <option value="all">All Users</option>
+      <option value="active">Active</option>
+      <option value="blocked">Blocked</option>
+    </select>
 
-  </select>
+  </div>
 
-</div>
-
+  <!-- USER CARDS -->
   <div class="row g-4">
 
     <div class="col-md-4" *ngFor="let user of filteredUsers">
 
-      <div class="card user-card shadow-sm h-100">
+      <div class="task-card user-card">
 
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <h5 class="mb-0 fw-bold">{{ user.username }}</h5>
+        <!-- HEADER -->
+        <div class="task-header">
 
-          <span class="badge"
-                [ngClass]="user.isBlocked ? 'bg-danger' : 'bg-success'">
-            {{ user.isBlocked ? 'Blocked' : 'Active' }}
-          </span>
-        </div>
+          <div>
+            <h5 class="task-title mb-0">{{ user.username }}</h5>
+            <small>User ID: {{ user.id }}</small>
+          </div>
 
-      
-        <div class="card-body">
+          <!-- ACTION ICONS -->
+          <div class="task-icons" *ngIf="user.id !== currentUser?.id">
 
-          
-          <div class="stats">
+            <i class="bi"
+               [ngClass]="user.isBlocked ? 'bi-person-check edit-icon' : 'bi-person-x delete-icon'"
+               (click)="toggleBlock(user)"
+               [title]="user.isBlocked ? 'Unblock User' : 'Block User'">
+            </i>
 
-            <div class="stat-box total">
-              <h6>Total</h6>
-              <p>{{ user.totalTasks }}</p>
-            </div>
-
-            <div class="stat-box pending">
-              <h6>Pending</h6>
-              <p>{{ user.pendingTasks }}</p>
-            </div>
-
-            <div class="stat-box completed">
-              <h6>Done</h6>
-              <p>{{ user.completedTasks }}</p>
-            </div>
+            <i class="bi bi-x-circle delete-icon"
+               (click)="deleteUser(user.id)"
+               title="Delete User">
+            </i>
 
           </div>
 
         </div>
 
+        <!-- STATUS -->
+        <div class="mt-2">
+          <span class="badge status approved" *ngIf="!user.isBlocked">Active</span>
+          <span class="badge status submitted" *ngIf="user.isBlocked">Blocked</span>
+        </div>
 
-        <div class="card-footer text-center d-flex gap-2">
+        <!-- STATS -->
+        <div class="stats mt-3">
 
-        
-        <ng-container *ngIf="user.id !== currentUser?.id">
+          <div class="stat-box total">
+            <h6>Total</h6>
+            <p>{{ user.totalTasks }}</p>
+          </div>
 
-            <button class="btn btn-sm w-50"
-                    [ngClass]="user.isBlocked ? 'btn-success':'btn-warning'"
-                    (click)="toggleBlock(user)">
-            {{user.isBlocked ? 'Unblock User' :'Block User'}}
-            </button>
+          <div class="stat-box pending">
+            <h6>Pending</h6>
+            <p>{{ user.pendingTasks }}</p>
+          </div>
 
-            <button class="btn btn-sm btn-danger w-50"
-                    (click)="deleteUser(user.id)">
-            Delete
-            </button>
-
-        </ng-container>
+          <div class="stat-box completed">
+            <h6>Done</h6>
+            <p>{{ user.completedTasks }}</p>
+          </div>
 
         </div>
 

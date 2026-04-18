@@ -1,42 +1,168 @@
-/* Card Styling */
-.user-card {
-  border-radius: 12px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  border: none;
+/* =========================
+   PAGE TITLE
+========================= */
+.page-title {
+  color: var(--text);
+  font-size: 20px;
+  letter-spacing: 0.5px;
 }
 
-.user-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+/* =========================
+   USER COUNT CHIP
+========================= */
+.user-count-chip {
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: var(--chip);
+  color: var(--text);
+  font-weight: 500;
+  border: 1px solid var(--border);
 }
 
-.card-header {
-  background: linear-gradient(45deg, #4b6cb7, #182848);
-  color: #fff;
-  font-size: 16px;
-}
-
-
-.stats {
+/* =========================
+   FILTER BAR (FIXED)
+========================= */
+.filter-bar {
   display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+  gap: 12px;
+  padding: 10px;
+  background: var(--nav-bg);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  width: fit-content; /* 🔥 KEY FIX */
 }
 
-.stat-box {
-  text-align: center;
-  flex: 1;
-  padding: 10px;
-  border-radius: 10px;
-  margin: 5px;
-  background: #f8f9fa;
+/* Controlled widths */
+.filter-bar .custom-input {
+  border-radius: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  background: var(--chip);
+  color: var(--text);
   transition: 0.3s;
 }
 
+/* Search width */
+.filter-bar input {
+  width: 260px;
+}
+
+/* Select width */
+.filter-bar select {
+  width: 150px;
+  cursor: pointer;
+}
+
+/* Placeholder fix */
+.custom-input::placeholder {
+  color: rgba(150,150,150,0.7);
+}
+
+/* Focus effect */
+.custom-input:focus {
+  outline: none;
+  border-color: var(--active);
+  box-shadow: 0 0 0 2px rgba(30,60,114,0.15);
+}
+
+/* =========================
+   USER CARD (UPGRADED)
+========================= */
+.user-card {
+  padding: 16px;
+  border-radius: 14px;
+  background: var(--nav-bg); /* 🔥 better than bg */
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+/* Hover */
+.user-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* =========================
+   HEADER
+========================= */
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Username (FIXED VISIBILITY + SIZE) */
+.task-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Optional user ID */
+.user-id {
+  font-size: 12px;
+  color: rgba(150,150,150,0.9);
+}
+
+/* =========================
+   ICONS
+========================= */
+.task-icons i {
+  font-size: 18px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.edit-icon {
+  color: #38bdf8;
+}
+
+.delete-icon {
+  color: #ff4d4d;
+}
+
+.task-icons i:hover {
+  transform: scale(1.2);
+}
+
+/* =========================
+   STATUS BADGES
+========================= */
+.badge.status.approved {
+  background: rgba(25, 135, 84, 0.15);
+  color: #198754;
+}
+
+.badge.status.submitted {
+  background: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+}
+
+/* =========================
+   STATS
+========================= */
+.stats {
+  display: flex;
+  gap: 10px;
+}
+
+/* Stat Box */
+.stat-box {
+  flex: 1;
+  text-align: center;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--chip);
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+}
+
+/* Text */
 .stat-box h6 {
   font-size: 13px;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
+  color: var(--text);
 }
 
 .stat-box p {
@@ -45,31 +171,34 @@
   margin: 0;
 }
 
+/* Border Colors */
 .total {
-  border-left: 4px solid #0d6efd;
+  border: 1px solid rgba(13,110,253,0.3);
 }
 
 .pending {
-  border-left: 4px solid #ffc107;
+  border: 1px solid rgba(255,193,7,0.3);
 }
 
 .completed {
-  border-left: 4px solid #198754;
+  border: 1px solid rgba(25,135,84,0.3);
 }
 
+/* 🔥 FULL BORDER HOVER */
 .stat-box:hover {
-  background: #e9ecef;
+  transform: scale(1.05);
+  border: 1px solid currentColor;
 }
 
-.card-footer {
-  background: #fff;
-  border-top: none;
+/* Color on hover */
+.total:hover {
+  color: #0d6efd;
 }
 
-input.form-control {
-  border-radius: 10px;
+.pending:hover {
+  color: #ffc107;
 }
 
-select.form-select {
-  border-radius: 10px;
+.completed:hover {
+  color: #198754;
 }

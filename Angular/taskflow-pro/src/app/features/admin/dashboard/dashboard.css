@@ -36,71 +36,107 @@
   margin-bottom: 30px;
 }
 
-/* KPI CARD */
+/* =========================
+   KPI CARD
+========================= */
 .kpi-card {
   position: relative;
   padding: 18px;
 
-  border-radius: 18px;
+  border-radius: 16px;
+
+  /* 🔥 softer border */
   border: 1px solid var(--border);
 
+  /* glass look */
   background: linear-gradient(
     135deg,
-    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.04),
     rgba(255,255,255,0.02)
   );
 
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(12px);
 
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
   overflow: hidden;
+
+  /* text default */
+  color: var(--text);
 }
 
+/* =========================
+   HOVER EFFECT
+========================= */
 .kpi-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  transform: translateY(-6px) scale(1.015);
+
+  /* smoother shadow */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+  /* 🔥 subtle highlight border */
+  border-color: currentColor;
 }
 
+/* 🔥 TEXT COLOR CHANGE ON HOVER */
+.kpi-card:hover .kpi-value,
+.kpi-card:hover .kpi-label {
+  color: inherit;
+}
+
+/* =========================
+   GLOW EFFECT (SUBTLE)
+========================= */
 .kpi-card::before {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
+  inset: 0;
+
+  background: radial-gradient(circle at top left,
+    rgba(255,255,255,0.08),
+    transparent 60%
+  );
+
   opacity: 0;
-  transition: 0.4s;
+  transition: 0.4s ease;
 }
 
 .kpi-card:hover::before {
   opacity: 1;
 }
 
-/* VALUE */
+/* =========================
+   VALUE
+========================= */
 .kpi-value {
-  font-size: 28px;
-  font-weight: 800;
+  font-size: 26px;
+  font-weight: 700;
+  transition: color 0.3s ease;
 }
-
-/* LABEL (FIXED: no muted issue) */
-.kpi-label {
-  font-size: 13px;
-  opacity: 0.75;
-  margin-top: 6px;
-}
-.kpi-card:nth-child(1) { border: 4px solid #4dabd9; }
-.kpi-card:nth-child(2) { border: 4px solid #51cf66; }
-.kpi-card:nth-child(3) { border: 4px solid #ff6b6b; }
-.kpi-card:nth-child(4) { border: 4px solid #845ef7; }
-.kpi-card:nth-child(5) { border: 4px solid #339af0; }
-.kpi-card:nth-child(6) { border: 4px solid #fcc419; }
-.kpi-card:nth-child(7) { border: 4px solid #20c997; }
-.kpi-card:nth-child(8) { border: 4px solid #fa5252; }
 
 /* =========================
-   CHART SECTION
+   LABEL
+========================= */
+.kpi-label {
+  font-size: 13px;
+  opacity: 0.7;
+  margin-top: 6px;
+  transition: color 0.3s ease;
+}
+
+/* =========================
+   COLOR THEMES (SOFT BORDERS)
+========================= */
+.kpi-card:nth-child(1) { color: #4dabf7; }
+.kpi-card:nth-child(2) { color: #51cf66; }
+.kpi-card:nth-child(3) { color: #ff6b6b; }
+.kpi-card:nth-child(4) { color: #845ef7; }
+.kpi-card:nth-child(5) { color: #339af0; }
+.kpi-card:nth-child(6) { color: #fcc419; }
+.kpi-card:nth-child(7) { color: #20c997; }
+.kpi-card:nth-child(8) { color: #fa5252; }
+
+/* =========================
+   CHART GRID
 ========================= */
 .chart-grid {
   display: grid;
@@ -108,34 +144,100 @@
   gap: 20px;
 }
 
+/* =========================
+   CHART CARD
+========================= */
 .chart-card {
-  padding: 20px;
-  border-radius: 18px;
+  position: relative;
+  padding: 18px;
 
+  border-radius: 16px;
+
+  /* 🔥 Add border for separation */
+  border: 1px solid var(--border);
+
+  /* Glass look */
   background: linear-gradient(
     135deg,
     rgba(255,255,255,0.04),
     rgba(255,255,255,0.01)
   );
+
   backdrop-filter: blur(12px);
+
+  transition: all 0.35s ease;
+  overflow: hidden;
+}
+
+/* =========================
+   HOVER EFFECT
+========================= */
+.chart-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+  /* subtle highlight */
+  border-color: rgba(255,255,255,0.15);
+}
+
+/* =========================
+   GLOW EFFECT (LIKE KPI)
+========================= */
+.chart-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at top left,
+    rgba(255,255,255,0.08),
+    transparent 60%
+  );
+
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.chart-card:hover::before {
+  opacity: 1;
+}
+
+/* =========================
+   TITLE
+========================= */
+.chart-card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+
+  color: var(--text);
+  letter-spacing: 0.3px;
 
   transition: 0.3s;
 }
 
-.chart-card:hover {
-  transform: translateY(-4px);
+/* 🔥 Title reacts on hover */
+.chart-card:hover h3 {
+  color: var(--active);
 }
 
-.chart-card h3 {
-  font-size: 16px;
-  margin-bottom: 15px;
-  font-weight: 600;
+/* =========================
+   CHART AREA
+========================= */
+.chart-body {
+  padding-top: 5px;
 }
 
-/* CHART SIZE FIX */
+/* Canvas styling */
 canvas {
   width: 100% !important;
-  height: 280px !important;
+  height: 260px !important;
+  transition: 0.3s;
+}
+
+/* Slight zoom feel */
+.chart-card:hover canvas {
+  transform: scale(1.01);
 }
 
 /* =========================
@@ -169,4 +271,33 @@ canvas {
   .kpi-grid {
     grid-template-columns: 1fr;
   }
+}
+.chart-body {
+  padding-top: 8px;
+}
+
+/* Smooth render */
+canvas {
+  width: 100% !important;
+  height: 260px !important;
+  transition: transform 0.3s ease;
+}
+
+/* Subtle zoom on hover */
+.chart-card:hover canvas {
+  transform: scale(1.02);
+}
+.chart-card h3::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 2px;
+  background: var(--active);
+  margin-top: 6px;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.chart-card:hover h3::after {
+  width: 50px;
 }

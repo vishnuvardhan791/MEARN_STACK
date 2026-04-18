@@ -1,11 +1,18 @@
+
 /* ================= FORM + INPUT ================= */
 .custom-input {
   background: var(--chip);
   border: 1px solid var(--border);
   color: var(--text);
-  border-radius: 10px;
-  padding: 10px;
-  transition: 0.3s;
+  border-radius: 12px;
+  padding: 10px 12px;
+  transition: all 0.3s ease;
+}
+
+.custom-input::placeholder {
+  color: var(--text);
+  opacity: 0.5;
+  font-size: 13px;
 }
 
 .custom-input:focus {
@@ -20,6 +27,8 @@
   color: white;
   border-radius: 20px;
   border: none;
+  padding: 6px 16px;
+  transition: 0.3s;
 }
 
 .create-btn:hover {
@@ -29,10 +38,11 @@
 /* ================= FORM CARD ================= */
 .task-form-card {
   background: var(--chip);
-  padding: 20px;
+  padding: 18px;
   border-radius: 16px;
   border: 1px solid var(--border);
 }
+
 .task-form-wrapper {
   max-height: 0;
   overflow: hidden;
@@ -46,6 +56,7 @@
   opacity: 1;
   transform: translateY(0);
 }
+
 /* ================= FILTER BAR ================= */
 .filter-bar {
   display: flex;
@@ -55,34 +66,74 @@
 
 /* ================= TASK CARD ================= */
 .task-card {
-  background: var(--chip);
-  border: 1px solid var(--border);  /* default */
+  position: relative;
+
+  background: var(--nav-bg);
+  border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 16px 16px 0px 16px;
+
+  padding: 16px 16px 12px 16px;
 
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
+/* Hover */
 .task-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  border-color: var(--active);
+}
+
+/* Glow effect */
+.task-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top left,
+    rgba(255,255,255,0.06),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.task-card:hover::before {
+  opacity: 1;
+}
+
+/* ================= HEADER ================= */
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
 }
 
 /* ================= TEXT ================= */
 .task-title {
   font-weight: 600;
+  font-size: 16px;
+  color: var(--text);
+  transition: 0.3s;
+}
+
+.task-card:hover .task-title {
+  color: var(--active);
 }
 
 .task-desc {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text);
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
+/* ================= META ================= */
 .task-meta {
   display: flex;
   justify-content: space-between;
@@ -108,73 +159,67 @@
 .status.submitted { background: #f59e0b; }
 .status.approved { background: #10b981; }
 
+/* ================= STATUS (CLEAN DESIGN) ================= */
+.status-approved {
+  background: rgba(16,185,129,0.12);
+}
+
+.status-submitted {
+  background: rgba(245,158,11,0.12);
+}
+
+.status-assigned {
+  background: rgba(59,130,246,0.12);
+}
+
+.status-overdue {
+  background: rgba(239,68,68,0.12);
+}
+
 /* ================= ACTIONS ================= */
 .task-actions {
-  margin-top: 12px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-
-  min-height: 70px; /* 👈 KEY FIX */
+  gap: 6px;
   justify-content: flex-end;
 }
+
 .task-actions button {
   border-radius: 8px;
   font-size: 13px;
 }
 
-/* STATUS COLORS */
-.status-approved {
-  opacity: 0.6; 
-}
-
-.status-submitted {
-  border: 2px solid #10b981; 
-}
-
-.status-assigned {
-  border: 2px solid #3b82f6; 
-}
-
-.status-overdue {
-  border: 2px solid #f59e0b; 
-}
-::placeholder {
-  color: var(--text);
-  opacity: 0.5;
-  font-size: 13px;
-}
-.task-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-}
-
+/* ================= ICONS ================= */
 .task-icons {
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
 .task-icons i {
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
   padding: 6px;
   border-radius: 8px;
-  transition: 0.25s;
+  transition: all 0.25s ease;
 }
 
+/* Edit */
 .edit-icon {
   color: #3b82f6;
 }
 
 .edit-icon:hover {
   background: rgba(59,130,246,0.15);
+  transform: scale(1.1);
 }
 
+/* Delete */
 .delete-icon {
   color: #ef4444;
 }
 
 .delete-icon:hover {
   background: rgba(239,68,68,0.15);
+  transform: scale(1.1);
 }
