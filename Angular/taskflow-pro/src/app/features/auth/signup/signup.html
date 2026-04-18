@@ -1,66 +1,89 @@
-<div class="container d-flex justify-content-center align-items-center vh-100">
-    <div class="card p-4 shadow-lg signup-card">
+<div class="container-fluid d-flex justify-content-center align-items-center vh-100 signup-bg">
 
-        <div class="card-header text-center">
-                <h4 class="mb-1">Create Account</h4>
-        </div>
+  <div class="card signup-card border-0">
 
-        <div class="card-body p-4">
-            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-                <div class="mb-3">
-                    <label class="form-label">Username</label>
-                    <input type="text" class="form-control" formControlName="username">
-
-                    <small class="text-danger"
-                        *ngIf="signupForm.controls.username.touched && signupForm.controls.username.invalid">
-                        Username is required
-                        
-                    </small>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" class="form-control" formControlName="password">
-
-                    <small class="text-danger"
-                        *ngIf="signupForm.controls.password.touched && signupForm.controls.password.errors?.['required']">
-                        Password is required
-                    </small>
-
-                    <small class="text-danger"
-                        *ngIf="signupForm.controls.password.touched && signupForm.controls.password.errors?.['minlength']">
-                        Minimum 8 characters required
-                    </small>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Confirm password</label>
-                    <input type="password" class="form-control" formControlName="confirmPassword">
-
-                    <small class="text-danger"
-                        *ngIf="signupForm.controls.confirmPassword.touched && signupForm.controls.confirmPassword.invalid">
-                        ConfirmPassword is required 
-                    </small>
-
-                    <small class="text-danger"
-                        *ngIf="signupForm.touched && !passwordMatch()">
-                        Password do not match
-                    </small>
-                </div>
-
-                <button class="btn btn-success w-100 mt-2" type="submit">
-                    Signup
-                </button>
-
-            </form>
-
-        </div>
-
-        <div class="card-footer text-center">
-            <small>
-                Already have an Account?
-                <a routerLink="/login">Login</a>
-            </small>
-        </div>
+    <!-- HEADER -->
+    <div class="text-center pt-4">
+      <h3 class="fw-bold title">Create Account</h3>
+      <p class="subtitle">Join and start your journey 🚀</p>
     </div>
+
+    <!-- CHARACTER -->
+    <div class="character-container text-center">
+      <div class="face" id="character">
+        
+        <div class="eyes">
+          <div class="eye left-eye"></div>
+          <div class="eye right-eye"></div>
+        </div>
+
+        <div class="hands"></div>
+
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="card-body px-4 pb-4">
+
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
+        <!-- USERNAME -->
+        <div class="mb-3 input-group-custom">
+          <input 
+            type="text"
+            class="form-control form-control-lg"
+            formControlName="username"
+            placeholder="Username"
+            (focus)="onUsernameFocus()"
+            (input)="onTyping($event)"
+            (blur)="onBlur()">
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="mb-3 input-group-custom">
+          <input 
+            type="password"
+            class="form-control form-control-lg"
+            formControlName="password"
+            placeholder="Password"
+            (focus)="onPasswordFocus()"
+            (blur)="onBlur()">
+        </div>
+
+        <!-- CONFIRM -->
+        <div class="mb-3 input-group-custom">
+          <input 
+            type="password"
+            class="form-control form-control-lg"
+            formControlName="confirmPassword"
+            placeholder="Confirm Password"
+            (focus)="onPasswordFocus()"
+            (blur)="onBlur()">
+        </div>
+
+        <!-- ERROR -->
+        <small class="text-danger"
+          *ngIf="signupForm.touched && !passwordMatch()">
+          Passwords do not match
+        </small>
+
+        <!-- BUTTON -->
+        <button class="btn signup-btn w-100 mt-3 py-2 fw-semibold">
+          Create Account
+        </button>
+
+      </form>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="text-center pb-4">
+      <small class="text-muted">
+        Already have an account?
+        <a routerLink="/login" class="login-link">
+          Login
+        </a>
+      </small>
+    </div>
+
+  </div>
 </div>

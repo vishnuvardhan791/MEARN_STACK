@@ -12,3 +12,55 @@ body {
 .card:hover {
   transform: translateY(-5px);
 }
+body {
+  --bg: #f5f7fb;
+  --text: #1b1f2a;
+
+  --nav-bg: linear-gradient(135deg, #e9efff, #dbe7ff);
+
+  --border: rgba(0,0,0,0.08);
+  --hover: rgba(0,0,0,0.06);
+  --chip: rgba(0,0,0,0.05);
+
+  --active: #1e3c72;
+
+  background: var(--bg);
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+/* ================= DARK MODE (PRO SaaS LOOK) ================= */
+body.dark-mode {
+  --bg: #0b1220;
+  --text: #e5e7eb;
+
+  --nav-bg: linear-gradient(135deg, #0f172a, #1e293b);
+
+  --border: rgba(255,255,255,0.08);
+  --hover: rgba(255,255,255,0.08);
+  --chip: rgba(255,255,255,0.06);
+
+  --active: #38bdf8;
+
+  background: var(--bg);
+  color: var(--text);
+}
+/* FIX SELECT + INPUT DARK MODE */
+select,
+input[type="date"] {
+  background: var(--chip) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+}
+
+/* Dropdown options (limited support but improves) */
+select option {
+  background: #0b1220;   /* dark background */
+  color: #ffffff;
+}
+
+/* Light mode fix */
+body:not(.dark-mode) select option {
+  background: #ffffff;
+  color: #000000;
+}

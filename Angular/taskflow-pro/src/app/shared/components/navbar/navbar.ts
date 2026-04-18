@@ -8,26 +8,62 @@ import { Router } from '@angular/router';
   styleUrl: './navbar.css',
 })
 export class Navbar implements OnInit {
-  username:string='';
+  username: string = '';
+  isDark: boolean = false;
 
-  constructor(private router:Router){}
+  constructor(private router: Router) {}
 
-  ngOnInit(): void{
-      const user =JSON.parse(localStorage.getItem('currentUser')||'null');
-      this.username=user?.username ||'Guest';
+  logout() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/login']);
+  }
 
-    }
-    logout(){
-      localStorage.removeItem('currentUser');
-      this.router.navigate(['/login']);
-    }
-    isAdmin(): boolean {
-      const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
-      return user?.role === 'admin';
-    }
+  isAdmin(): boolean {
+    const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    return user?.role === 'admin';
+  }
 
-    isUser(): boolean {
-      const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
-      return user?.role === 'user';
-    }
+  isUser(): boolean {
+    const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    return user?.role === 'user';
+  }
+
+  toggleTheme() {
+  this.isDark = !this.isDark;
+
+  if (this.isDark) {
+    document.body.classList.add('dark-mode');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.body.classList.remove('dark-mode');
+    localStorage.setItem('theme', 'light');
+  }
+  
 }
+
+ngOnInit(): void {
+  const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+  this.username = user?.username || 'Guest';
+
+  const theme = localStorage.getItem('theme');
+
+  if (theme === 'dark') {
+    this.isDark = true;
+    document.body.classList.add('dark-mode');
+  } else {
+    this.isDark = false;
+    document.body.classList.remove('dark-mode');
+  }
+}
+
+  applyTheme() {
+    const body = document.body;
+
+    if (this.isDark) {
+      body.classList.add('dark-mode');
+    } else {
+      body.classList.remove('dark-mode');
+    }
+  }
+}
+  

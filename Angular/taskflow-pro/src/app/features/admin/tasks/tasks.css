@@ -1,9 +1,180 @@
-.card {
+/* ================= FORM + INPUT ================= */
+.custom-input {
+  background: var(--chip);
+  border: 1px solid var(--border);
+  color: var(--text);
   border-radius: 10px;
-  transition: all 0.2s ease;
+  padding: 10px;
+  transition: 0.3s;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+.custom-input:focus {
+  outline: none;
+  border-color: var(--active);
+  box-shadow: 0 0 0 2px rgba(56,189,248,0.2);
+}
+
+/* ================= CREATE BUTTON ================= */
+.create-btn {
+  background: var(--active);
+  color: white;
+  border-radius: 20px;
+  border: none;
+}
+
+.create-btn:hover {
+  opacity: 0.9;
+}
+
+/* ================= FORM CARD ================= */
+.task-form-card {
+  background: var(--chip);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+.task-form-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.4s ease;
+}
+
+.task-form-wrapper.show {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+}
+/* ================= FILTER BAR ================= */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ================= TASK CARD ================= */
+.task-card {
+  background: var(--chip);
+  border: 1px solid var(--border);  /* default */
+  border-radius: 16px;
+  padding: 16px 16px 0px 16px;
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transition: all 0.25s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ================= TEXT ================= */
+.task-title {
+  font-weight: 600;
+}
+
+.task-desc {
+  font-size: 14px;
+  color: var(--text);
+  opacity: 0.7;
+}
+
+.task-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.label {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.value {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ================= BADGES ================= */
+.priority.high { background: #ef4444; }
+.priority.medium { background: #f59e0b; }
+.priority.low { background: #6b7280; }
+
+.status.assigned { background: #3b82f6; }
+.status.submitted { background: #f59e0b; }
+.status.approved { background: #10b981; }
+
+/* ================= ACTIONS ================= */
+.task-actions {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  min-height: 70px; /* 👈 KEY FIX */
+  justify-content: flex-end;
+}
+.task-actions button {
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+/* STATUS COLORS */
+.status-approved {
+  opacity: 0.6; 
+}
+
+.status-submitted {
+  border: 2px solid #10b981; 
+}
+
+.status-assigned {
+  border: 2px solid #3b82f6; 
+}
+
+.status-overdue {
+  border: 2px solid #f59e0b; 
+}
+::placeholder {
+  color: var(--text);
+  opacity: 0.5;
+  font-size: 13px;
+}
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.task-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.task-icons i {
+  font-size: 16px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  transition: 0.25s;
+}
+
+.edit-icon {
+  color: #3b82f6;
+}
+
+.edit-icon:hover {
+  background: rgba(59,130,246,0.15);
+}
+
+.delete-icon {
+  color: #ef4444;
+}
+
+.delete-icon:hover {
+  background: rgba(239,68,68,0.15);
 }

@@ -1,0 +1,112 @@
+/* =========================
+   BASE NAVBAR
+========================= */
+.custom-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+/* Brand */
+.brand {
+  color: var(--text);
+  letter-spacing: 1px;
+}
+
+/* =========================
+   NAV PILLS
+========================= */
+.nav-pill {
+  padding: 6px 14px;
+  border-radius: 25px;
+  text-decoration: none;
+
+  color: var(--text);
+  font-weight: 500;
+
+  transition: 0.3s;
+}
+.nav-pill:hover {
+  background: var(--hover);
+}
+
+.active-link {
+  background: var(--active);
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+/* DARK MODE FIX */
+body.dark-mode .active-link {
+  background: #38bdf8;
+  color: #0f172a !important;
+}
+
+/* =========================
+   USER CHIP
+========================= */
+.user-chip {
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: var(--chip);
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.logout-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: none;
+  background: #ff4d4d;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #e63c3c;
+  transform: scale(1.05);
+}
+
+.theme-btn {
+  border: none;
+  background: var(--chip);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* =========================
+   LIGHT / DARK VARIABLES
+========================= */
+:root {
+  --nav-bg: rgba(13, 110, 253, 0.85);
+  --text: white;
+  --hover: rgba(255,255,255,0.15);
+  --active: #ffffff;
+  --chip: rgba(255,255,255,0.2);
+  --border: rgba(255,255,255,0.2);
+}
+
+/* DARK MODE */
+.dark-mode {
+  --nav-bg: #121212;
+  --text: #ffffff;
+  --hover: rgba(255,255,255,0.1);
+  --active: #4dabf7;
+  --chip: rgba(255,255,255,0.1);
+  --border: rgba(255,255,255,0.08);
+}

@@ -1,48 +1,79 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary px-4 shadow">
+<nav class="navbar navbar-expand-lg custom-navbar px-4 shadow-sm">
 
-  <span class="navbar-brand fw-bold fs-4">
-    TaskFlow Pro
+  <!-- Brand -->
+  <span class="navbar-brand fw-bold fs-4 brand">
+    ⚡ TaskFlow Pro
   </span>
 
-  <div class="ms-4 d-flex gap-3">
+  <!-- Toggle -->
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBarContent">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <ng-container  *ngIf="isUser()">
-      <a routerLink="/user/dashboard" class="btn btn-outline-light btn-sm">
-        Dashboard
-      </a>
+  <div class="collapse navbar-collapse" id="navBarContent">
 
-      <a routerLink="/user/tasks" class="btn btn-outline-light btn-sm">
-        My Tasks
-      </a>
-    </ng-container>
+    <!-- LEFT NAV -->
+    <div class="ms-4 d-flex gap-2 align-items-center">
 
-    <ng-container *ngIf="isAdmin()">
-      <a routerLink="/admin/dashboard" class="btn btn-outline-light btn-sm">
-        Dashboard
-      </a>
+      <ng-container *ngIf="isUser()">
 
-      <a routerLink="/admin/tasks" routerLinkActive="btn-light text-primary"
-        class="btn btn-outline-light btn-sm">
-        Tasks
-      </a>
+        <a routerLink="/user/dashboard"
+           routerLinkActive="active-link"
+           class="nav-pill">
+          Dashboard
+        </a>
 
-      <a routerLink="/admin/users" class="btn btn-outline-light btn-sm">
-        Users
-      </a>
-    </ng-container>
+        <a routerLink="/user/tasks"
+           routerLinkActive="active-link"
+           class="nav-pill">
+          My Tasks
+        </a>
+
+      </ng-container>
+
+      <ng-container *ngIf="isAdmin()">
+
+        <a routerLink="/admin/dashboard"
+           routerLinkActive="active-link"
+           class="nav-pill">
+          Dashboard
+        </a>
+
+        <a routerLink="/admin/tasks"
+           routerLinkActive="active-link"
+           class="nav-pill">
+          Tasks
+        </a>
+
+        <a routerLink="/admin/users"
+           routerLinkActive="active-link"
+           class="nav-pill">
+          Users
+        </a>
+
+      </ng-container>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="ms-auto d-flex align-items-center gap-3">
+
+      <!-- Theme Toggle -->
+      <button class="theme-btn" (click)="toggleTheme()">
+        {{ isDark ? '🌙' : '☀️' }}
+      </button>
+
+      <!-- User Chip -->
+      <div class="user-chip">
+        👤 {{ username }}
+      </div>
+
+      <!-- Logout -->
+      <button class="logout-btn" (click)="logout()">
+        Logout
+      </button>
+
+    </div>
 
   </div>
-
-  <div class="ms-auto d-flex align-items-center gap-3">
-
-    <span class="text-white fw-semibold">
-      Welcome, {{username}}
-    </span>
-
-    <button class="btn btn-light btn-sm px-3" (click)="logout()">
-      Logout
-    </button>
-
-  </div>
-
 </nav>

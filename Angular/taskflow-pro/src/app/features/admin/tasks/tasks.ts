@@ -11,10 +11,12 @@ import { UserService } from '../../../core/services/user.service';
   styleUrl: './tasks.css',
 })
 export class Tasks implements OnInit {
-
+  showForm: boolean = false;
   searchText: string = '';
   filterStatus: string = 'all';
   sortBy: string = 'none';
+  isEditMode: boolean = false;
+  editingTaskId: number | null = null;
 
   filteredTasks: Task[] = [];
   users: User[] = [];
@@ -33,6 +35,7 @@ export class Tasks implements OnInit {
   constructor(private taskService: TaskService,private userService:UserService) {}
 
   ngOnInit(): void {
+
   this.loadData();
 
   this.taskService.taskChanged.subscribe(() => {
@@ -52,6 +55,24 @@ export class Tasks implements OnInit {
 }
 
   addTask() {
+
+  if (this.isEditMode && this.editingTaskId !== null) {
+
+    // 🔥 UPDATE FLOW
+    const updatedTask: Task = {
+      ...this.newTask,
+      id: this.editingTaskId,
+      userId: Number(this.newTask.userId)
+    };
+
+    this.taskService.updateTask(updatedTask);
+
+    this.isEditMode = false;
+    this.editingTaskId = null;
+
+  } else {
+
+    // 🔥 CREATE FLOW
     const task: Task = {
       ...this.newTask,
       id: Date.now(),
@@ -60,19 +81,46 @@ export class Tasks implements OnInit {
     };
 
     this.taskService.addTask(task);
-
-    this.newTask = {
-      id: 0,
-      title: '',
-      description: '',
-      priority: 'low',
-      deadline: '',
-      userId: 0,
-      status: 'assigned'
-    };
-
-    this.loadData();
   }
+
+  // 🔥 RESET FORM
+  this.newTask = {
+    id: 0,
+    title: '',
+    description: '',
+    priority: 'low',
+    deadline: '',
+    userId: 0,
+    status: 'assigned'
+  };
+
+  this.showForm = false;
+  this.loadData();
+}
+  editTask(task: Task) {
+    this.newTask = { ...task };   // 🔥 fill form with existing data
+
+    this.isEditMode = true;
+    this.editingTaskId = task.id;
+
+    this.showForm = true;         // open form
+  }
+  cancelEdit() {
+  this.isEditMode = false;
+  this.editingTaskId = null;
+
+  this.newTask = {
+    id: 0,
+    title: '',
+    description: '',
+    priority: 'low',
+    deadline: '',
+    userId: 0,
+    status: 'assigned'
+  };
+
+  this.showForm = false;
+}
 
   deleteTask(id: number) {
     this.taskService.deleteTask(id);
@@ -94,9 +142,9 @@ export class Tasks implements OnInit {
     this.loadData();
   }
 
-  getUsername(userId: number) {
-    const user = this.users.find(u => u.id == userId);
-    return user ? user.username : 'Unknown';
+  getUsername(userId: any): string {
+    const user = this.users.find(u => u.id == userId); 
+    return user ? user.username : '';
   }
 
   isOverdue(task: Task): boolean {
@@ -104,32 +152,45 @@ export class Tasks implements OnInit {
   }
   applyFilters() {
 
-    let temp = [...this.tasks];
+      let temp = [...this.tasks];
 
-    if (this.searchText.trim()) {
-      temp = temp.filter(task =>
-        task.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        task.description.toLowerCase().includes(this.searchText.toLowerCase())
-      );
+      // 🔍 SEARCH
+      if (this.searchText.trim()) {
+        temp = temp.filter(task =>
+          task.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
+          task.description.toLowerCase().includes(this.searchText.toLowerCase())
+        );
+      }
+
+      // 🎯 FILTER
+      if (this.filterStatus !== 'all') {
+        temp = temp.filter(task => task.status === this.filterStatus);
+      }
+
+      // 📅 SORT BY DEADLINE
+      if (this.sortBy === 'deadline') {
+        temp.sort((a, b) =>
+          new Date(a.deadline).getTime() - new Date(b.deadline).getTime()
+        );
+      }
+
+      // ⚡ SORT BY PRIORITY
+      if (this.sortBy === 'priority') {
+        const priorityOrder: any = { high: 1, medium: 2, low: 3 };
+        temp.sort((a, b) =>
+          priorityOrder[a.priority] - priorityOrder[b.priority]
+        );
+      }
+
+      // 🔥 FINAL STEP: PUSH APPROVED TO BOTTOM
+      if (this.filterStatus === 'all') {
+        temp.sort((a, b) => {
+          if (a.status === 'approved' && b.status !== 'approved') return 1;
+          if (a.status !== 'approved' && b.status === 'approved') return -1;
+          return 0;
+        });
+      }
+
+      this.filteredTasks = temp;
     }
-
-    if (this.filterStatus !== 'all') {
-      temp = temp.filter(task => task.status === this.filterStatus);
-    }
-
-    if (this.sortBy === 'deadline') {
-      temp.sort((a, b) =>
-        new Date(a.deadline).getTime() - new Date(b.deadline).getTime()
-      );
-    }
-
-    if (this.sortBy === 'priority') {
-      const priorityOrder: any = { high: 1, medium: 2, low: 3 };
-      temp.sort((a, b) =>
-        priorityOrder[a.priority] - priorityOrder[b.priority]
-      );
-    }
-
-    this.filteredTasks = temp;
-  }
 }

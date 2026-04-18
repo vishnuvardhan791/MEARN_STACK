@@ -59,30 +59,30 @@ export class Dashboard implements OnInit, OnDestroy {
 
   loadDashboard() {
 
-    const users = this.userService.getUsers();
-    const tasks = this.taskService.getTasks();
+  const users = this.userService.getUsers();
+  const tasks = this.taskService.getTasks();
 
-    this.totalUsers = users.length;
-    this.activeUsers = users.filter(u => !u.isBlocked).length;
-    this.blockedUsers = users.filter(u => u.isBlocked).length;
+  this.totalUsers = users.length;
+  this.activeUsers = users.filter(u => !u.isBlocked).length;
+  this.blockedUsers = users.filter(u => u.isBlocked).length;
 
-    this.totalTasks = tasks.length;
+  this.totalTasks = tasks.length;
 
-    const now = new Date();
+  const now = new Date();
 
-    this.assignedTasks = tasks.filter(t => t.status === 'assigned').length;
+  this.assignedTasks = tasks.filter(t => t.status === 'assigned').length;
+  this.submittedTasks = tasks.filter(t => t.status === 'submitted').length;
+  this.approvedTasks = tasks.filter(t => t.status === 'approved').length;
 
-    this.submittedTasks = tasks.filter(t => t.status === 'submitted').length;
+  this.overdueTasks = tasks.filter(
+    (t: Task) => t.status !== 'approved' && new Date(t.deadline) < now
+  ).length;
 
-    this.approvedTasks = tasks.filter(t => t.status === 'approved').length;
-
-    this.overdueTasks = tasks.filter(
-      (t: Task) => t.status !== 'approved' && new Date(t.deadline) < now
-    ).length;
-
+  setTimeout(() => {
     this.renderTaskChart();
     this.renderUserChart();
-  }
+  }, 0);
+}
 
   renderTaskChart() {
     const canvas = document.getElementById('taskChart') as HTMLCanvasElement;
@@ -174,4 +174,5 @@ export class Dashboard implements OnInit, OnDestroy {
       }
     });
   }
+  
 }
