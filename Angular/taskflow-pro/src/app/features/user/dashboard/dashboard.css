@@ -1,35 +1,190 @@
-.dashboard-card{
-    border-radius: 15px;
-    transition: 0.3s;
+/* ================= DASHBOARD ================= */
+
+.dashboard-container {
+  padding: 10px;
 }
 
-.dashboard-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+/* HEADER */
+.dashboard-header h2 {
+  font-weight: 600;
 }
 
-.icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+.dashboard-header p {
+  color: var(--text);
+  opacity: 0.7;
+  margin-top: 5px;
+}
+
+/* ================= GRID ================= */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* ================= CARD ================= */
+
+.stat-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  border-radius: 18px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.02)
+  );
+
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+
+  transition: all 0.3s ease;
+}
+
+/* 🔥 MAIN HOVER */
+.stat-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+/* 🔥 TOP GLOW LINE */
+.stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #3b82f6, #6366f1, #22c55e);
+  transition: width 0.3s ease;
+}
+
+.stat-card:hover::before {
+  width: 100%;
+}
+
+/* 🔥 SOFT LIGHT EFFECT */
+.stat-card::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(255,255,255,0.12), transparent);
+  top: -40px;
+  right: -40px;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.stat-card:hover::after {
+  opacity: 1;
+}
+
+/* TEXT */
+.stat-card p {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.stat-card h3 {
+  margin: 0;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+/* 🔥 NUMBER EFFECT */
+.stat-card:hover h3 {
+  letter-spacing: 1px;
+}
+
+/* ================= ICON ================= */
+
+.stat-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  font-size: 20px;
+
+  font-size: 18px;
+  color: white;
+
+  transition: all 0.3s ease;
 }
 
-.chart-container {
-  width: 260px;
-  height: 260px;
+/* 🔥 ICON ANIMATION */
+.stat-card:hover .stat-icon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+/* COLORS */
+.total { background: #3b82f6; }
+.assigned { background: #6366f1; }
+.submitted { background: #f59e0b; }
+.approved { background: #22c55e; }
+.overdue { background: #ef4444; }
+
+/* ================= CHART ================= */
+
+.chart-card {
+  position: relative;
+  padding: 20px;
+  border-radius: 20px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.01)
+  );
+
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+
+  transition: all 0.3s ease;
+}
+
+/* 🔥 CHART HOVER */
+.chart-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* HEADER */
+.chart-header h4 {
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* FIX SIZE */
+.chart-wrapper {
+  width: 100%;
+  max-width: 320px;
+  height: 320px;
   margin: auto;
 }
 
-.chart-container canvas {
-  width: 100% !important;
-  height: 100% !important;
+/* ================= DARK MODE FIX ================= */
+
+body.dark-mode .stat-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
 }
 
-.card{
-  height: 100%;
+body.dark-mode .chart-card:hover {
+  box-shadow: 0 10px 35px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .stat-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.06),
+    rgba(255,255,255,0.02)
+  );
 }

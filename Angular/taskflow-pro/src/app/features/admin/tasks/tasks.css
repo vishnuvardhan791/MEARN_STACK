@@ -223,3 +223,14 @@
   background: rgba(239,68,68,0.15);
   transform: scale(1.1);
 }
+/* ensure icons are clickable */
+.task-icons {
+  position: relative;
+  z-index: 2;
+}
+
+/* prevent overlay blocking clicks */
+.task-card::before,
+.task-card::after {
+  pointer-events: none;
+}

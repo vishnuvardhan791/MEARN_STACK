@@ -129,11 +129,11 @@
         <div class="task-icons" *ngIf="task.status !== 'approved'">
 
           <i class="bi bi-pencil-square edit-icon"
-            (click)="editTask(task)"
+            (click)="editTask(task); debugClick('edit', task)"
             title="Edit"></i>
 
           <i class="bi bi-x-circle delete-icon"
-            (click)="deleteTask(task.id)"
+            (click)="deleteTask(task.id); debugClick('delete', task)"
             title="Delete"></i>
 
         </div>

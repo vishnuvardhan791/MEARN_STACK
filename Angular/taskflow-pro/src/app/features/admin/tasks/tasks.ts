@@ -98,12 +98,17 @@ export class Tasks implements OnInit {
   this.loadData();
 }
   editTask(task: Task) {
-    this.newTask = { ...task };   // 🔥 fill form with existing data
+  this.newTask = {
+    ...task,
+    userId: Number(task.userId)   // 🔥 force correct type
+  };
 
-    this.isEditMode = true;
-    this.editingTaskId = task.id;
-
-    this.showForm = true;         // open form
+  this.isEditMode = true;
+  this.editingTaskId = task.id;
+  this.showForm = true;
+}
+  debugClick(type: string, task: any) {
+    console.log(type, task);
   }
   cancelEdit() {
   this.isEditMode = false;

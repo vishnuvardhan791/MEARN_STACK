@@ -92,7 +92,10 @@ export class Dashboard implements OnInit, OnDestroy {
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            position: 'bottom'
+            position: 'bottom',
+            labels: {
+              color: getComputedStyle(document.body).getPropertyValue('--text')
+            }
           }
         }
       }
