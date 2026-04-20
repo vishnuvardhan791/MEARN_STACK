@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../../core/services/user.service';
+import { User } from '../../../models/user.model';
 
 @Component({
   selector: 'app-signup',
@@ -17,55 +18,62 @@ export class Signup {
   ) {}
 
   signupForm = new FormGroup({
-    username: new FormControl('', [Validators.required]),
-    password: new FormControl('', [
+    username: new FormControl<string>('', [Validators.required]),
+    password: new FormControl<string>('', [
       Validators.required,
       Validators.minLength(8)
     ]),
-    confirmPassword: new FormControl('', Validators.required),
-    role: new FormControl('user')
+    confirmPassword: new FormControl<string>('', Validators.required),
+    role: new FormControl<'user'>('user')
   });
 
   strengthClass = '';
 
+  // ================= PASSWORD MATCH =================
   passwordMatch(): boolean {
     return this.signupForm.value.password === this.signupForm.value.confirmPassword;
   }
 
+  // ================= SUBMIT =================
   onSubmit() {
-    if (this.signupForm.valid && this.passwordMatch()) {
-
-      const newUser = {
-        id: Date.now(),
-        username: this.signupForm.value.username,
-        password: this.signupForm.value.password,
-        role: 'user',
-        isBlocked: false
-      };
-
-      // 🔥 Duplicate check
-      const users = this.userService.getUsers();
-      const exists = users.some(u => u.username === newUser.username);
-
-      if (exists) {
-        alert('Username already exists');
-        return;
-      }
-
-      // 🔥 Save via service
-      users.push(newUser);
-      this.userService.updateUsers(users);
-
-      alert('Signup successful');
-
-      this.router.navigate(['/login']);
-
-    } else {
+    if (this.signupForm.invalid || !this.passwordMatch()) {
       this.signupForm.markAllAsTouched();
+      return;
     }
+
+    // ✅ SAFE extraction (NO null issue now)
+    const username = this.signupForm.value.username!;
+    const password = this.signupForm.value.password!;
+
+    // 🔥 Get users
+    const users = this.userService.getUsers();
+
+    // 🔥 Duplicate check
+    const exists = users.some(u => u.username === username);
+    if (exists) {
+      alert('Username already exists');
+      return;
+    }
+
+    // ✅ STRICT TYPE SAFE USER
+    const newUser: User = {
+      id: Date.now(),
+      username: username,
+      password: password,
+      role: 'user',
+      isBlocked: false
+    };
+
+    // 🔥 Save
+    users.push(newUser);
+    this.userService.updateUsers(users);
+
+    alert('Signup successful');
+
+    this.router.navigate(['/login']);
   }
 
-  // 🎭 Animations
+  // ================= ANIMATIONS =================
   onUsernameFocus() {
     document.getElementById('character')?.classList.remove('password-mode');
   }
@@ -94,6 +102,7 @@ export class Signup {
     }
   }
 
+  // ================= PASSWORD STRENGTH =================
   checkStrength() {
     const value = this.signupForm.value.password || '';
 
